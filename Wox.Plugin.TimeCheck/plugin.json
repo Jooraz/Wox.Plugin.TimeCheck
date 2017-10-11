@@ -1,12 +1,12 @@
 ﻿{
-  "ID": "51E8142B678042328076C56253B4C747", //Plugin ID，32 bit UUID
-  "ActionKeyword": "time", //Plugin default action keyword
-  "Name": "Worldwide time checker", //Plugin name
-  "Description": "Wox Package Management", //Plugin description
-  "Author": "Jooraz", //Plugin Author
-  "Version": "0.0.1", //Plugin version，must be x.x.x format
-  "Language": "csharp", //Plugin language，we support csharp,python and executable now
-  "Website": "http://www.getwox.com", //Plugin website or author website
-  "IcoPath": "Images\\pic.png", //Plugin icon, relative path to the pluign folder
-  "ExecuteFileName": "TimeCheck.dll" //Execution entry. Dll name for c# plugin, and python file for python plugin
+  "ID": "51E8142B678042328076C56253B4C747",
+  "ActionKeyword": "time",
+  "Name": "Worldwide time checker",
+  "Description": "Plugin for checking current time in given location",
+  "Author": "Tomasz Jurkiewicz",
+  "Version": "0.1.0",
+  "Language": "csharp",
+  "Website": "https://github.com/Jooraz/Wox.Plugin.TimeCheck",
+  "IcoPath": "Images\\pic.png",
+  "ExecuteFileName": "Wox.Plugin.TimeCheck.dll"
 }

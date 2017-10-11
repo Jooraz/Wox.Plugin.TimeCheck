@@ -79,64 +79,69 @@ namespace TimeCheck
                 });
             }
 
-            var getData = new Action(() =>
+            if (!string.IsNullOrEmpty(_settings.GoogleKey))
             {
-                if (results.Any())
+                var getData = new Action(() =>
                 {
-                    var client = new RestClient("https://maps.googleapis.com");
-                    var name = query.Search;
-
-                    var geoRequest = new RestRequest("maps/api/geocode/json");
-                    geoRequest.AddQueryParameter("address", name);
-                    geoRequest.AddQueryParameter("key", key);
-
-                    IRestResponse<GeoOutput> response = client.Execute<GeoOutput>(geoRequest);
-
-                    //if not ok, nothing else to do
-                    if (response.StatusCode != HttpStatusCode.OK)
+                    if (results.Any())
                     {
-                        return;
-                    }
+                        var client = new RestClient("https://maps.googleapis.com");
+                        var name = query.Search;
 
-                    foreach (var el in response.Data.Results)
-                    {
-                        var address = el.FormattedAddress;
-                        var location = el.Geometry.Location;
+                        var geoRequest = new RestRequest("maps/api/geocode/json");
+                        geoRequest.AddQueryParameter("address", name);
+                        geoRequest.AddQueryParameter("key", key);
 
-                        var request = new RestRequest("maps/api/timezone/json?location={lat},{lng}&key={key}", Method.GET);
-                        request.AddUrlSegment("lat", location.Lat.ToString(CultureInfo.InvariantCulture));
-                        request.AddUrlSegment("lng", location.Lng.ToString(CultureInfo.InvariantCulture));
-                        request.AddUrlSegment("key", key);
-                        request.AddQueryParameter("timestamp", ((long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString());
+                        IRestResponse<GeoOutput> response = client.Execute<GeoOutput>(geoRequest);
 
-                        IRestResponse<TimeResult> oneTimeResult = client.Execute<TimeResult>(request);
-                        var timeResult = oneTimeResult.Data;
-                        if (oneTimeResult.StatusCode == HttpStatusCode.OK && timeResult.Status == "OK")
+                        //if not ok, nothing else to do
+                        if (response.StatusCode != HttpStatusCode.OK)
                         {
-                            var time = DateTime.UtcNow.AddSeconds(timeResult.RawOffset + timeResult.DstOffset);
+                            return;
+                        }
 
-                            var value = $"Local time for {address} is {time}";
-                            var result = new Result()
+                        foreach (var el in response.Data.Results)
+                        {
+                            var address = el.FormattedAddress;
+                            var location = el.Geometry.Location;
+
+                            var request = new RestRequest("maps/api/timezone/json?location={lat},{lng}&key={key}", Method.GET);
+                            request.AddUrlSegment("lat", location.Lat.ToString(CultureInfo.InvariantCulture));
+                            request.AddUrlSegment("lng", location.Lng.ToString(CultureInfo.InvariantCulture));
+                            request.AddUrlSegment("key", key);
+                            request.AddQueryParameter("timestamp", ((long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds).ToString());
+
+                            IRestResponse<TimeResult> oneTimeResult = client.Execute<TimeResult>(request);
+                            var timeResult = oneTimeResult.Data;
+                            if (oneTimeResult.StatusCode == HttpStatusCode.OK && timeResult.Status == "OK")
                             {
-                                Title = value,
-                                SubTitle = "Copy to clipboard",
-                                Action = e =>
-                                {
-                                    Clipboard.SetText(value);
-                                    return true;
-                                }
-                            };
+                                var time = DateTime.UtcNow.AddSeconds(timeResult.RawOffset + timeResult.DstOffset);
 
-                            results.Add(result);
+                                var value = $"Local time for {address} is {time}";
+                                var result = new Result()
+                                {
+                                    Title = value,
+                                    SubTitle = "Copy to clipboard",
+                                    Action = e =>
+                                    {
+                                        Clipboard.SetText(value);
+                                        return true;
+                                    }
+                                };
+
+                                results.Add(result);
+                            }
                         }
                     }
-                }
-            });
+                });
 
-            _debouncer.AddAction(getData);
+                _debouncer.AddAction(getData);
+
+            }
 
             return results;
         }
+
 
         public System.Windows.Controls.Control CreateSettingPanel()
         {
