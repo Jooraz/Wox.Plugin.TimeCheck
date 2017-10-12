@@ -24,7 +24,7 @@ namespace Wox.Plugin.TimeCheck
                     var parsingOk = !regex.IsMatch(value.ToString());
                     if (!parsingOk)
                     {
-                        validationResult = new ValidationResult(false, ErrorMessage);
+                        validationResult = new ValidationResult(false, ErrorMessage.Value);
                     }
                 }
             }
