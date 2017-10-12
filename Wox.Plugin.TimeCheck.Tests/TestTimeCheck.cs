@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading.Tasks;
-using TimeCheck.Helpers;
+using Wox.Plugin.TimeCheck.Helpers;
 
-namespace TimeCheck.Tests
+namespace Wox.Plugin.TimeCheck.Tests
 {
     [TestClass]
     public class TestTimeCheck

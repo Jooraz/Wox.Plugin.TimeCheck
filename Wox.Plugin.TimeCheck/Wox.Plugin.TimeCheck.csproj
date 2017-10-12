@@ -42,6 +42,8 @@
       <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
@@ -54,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OnlyDigitsValidationRule.cs" />
     <Compile Include="TimeChecker.cs" />
     <Compile Include="Helpers\Debouncer.cs" />
     <Compile Include="Models\Geometry.cs" />

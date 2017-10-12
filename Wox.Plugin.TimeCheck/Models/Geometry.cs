@@ -1,4 +1,4 @@
-﻿namespace TimeCheck.Models
+﻿namespace Wox.Plugin.TimeCheck.Models
 {
     public class Geometry
     {

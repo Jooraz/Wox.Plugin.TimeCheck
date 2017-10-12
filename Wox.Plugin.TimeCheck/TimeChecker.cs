@@ -11,10 +11,10 @@ using System.Net;
 using Wox.Infrastructure.Storage;
 using System.Globalization;
 using System.Reflection;
-using TimeCheck.Helpers;
-using TimeCheck.Models;
+using Wox.Plugin.TimeCheck.Helpers;
+using Wox.Plugin.TimeCheck.Models;
 
-namespace TimeCheck
+namespace Wox.Plugin.TimeCheck
 {
 
     public partial class TimeChecker : IPlugin, ISettingProvider, IPluginI18n, ISavable

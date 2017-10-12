@@ -5,4 +5,6 @@
     <system:String x:Key="wox_plugin_timecheck_plugin_description">Simple time checker for timezones and countries</system:String>
     <system:String x:Key="wox_plugin_timecheck_googleApiKeyText">Google API key:</system:String>
     <system:String x:Key="wox_plugin_timecheck_googleApiKeyTexttooltip">Google API key</system:String>
+    <system:String x:Key="wox_plugin_timecheck_delay_error_message">Illegal Characters, Please Enter Numeric Value</system:String>
+    <system:String x:Key="wox_plugin_timecheck_delay">Delay (ms)</system:String>
 </ResourceDictionary>

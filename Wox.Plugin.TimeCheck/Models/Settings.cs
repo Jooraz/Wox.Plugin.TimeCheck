@@ -1,19 +1,19 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace TimeCheck.Models
+namespace Wox.Plugin.TimeCheck.Models
 {
     public class Settings
     {
         [JsonProperty]
-        public TimeSpan Delay { get; set; }
+        public long Delay { get; set; }
 
         [JsonProperty]
         public string GoogleKey { get; set; }
 
         public Settings()
         {
-            Delay = TimeSpan.FromSeconds(1);
+            Delay = (long)TimeSpan.FromSeconds(1).TotalMilliseconds;
         }
     }
 }

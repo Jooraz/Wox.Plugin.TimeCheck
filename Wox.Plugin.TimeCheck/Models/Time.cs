@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using Wox.Infrastructure.Storage;
 
-namespace TimeCheck.Models
+namespace Wox.Plugin.TimeCheck.Models
 {
     [XmlType("row")]
     public class Time

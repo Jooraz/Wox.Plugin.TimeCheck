@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TimeCheck.Helpers
+namespace Wox.Plugin.TimeCheck.Helpers
 {
     public class Debouncer
     {
@@ -14,6 +14,11 @@ namespace TimeCheck.Helpers
         public Debouncer(TimeSpan delay)
         {
             this.delay = delay;
+        }
+
+        public Debouncer(long delay) : this(TimeSpan.FromMilliseconds(delay))
+        {
+
         }
 
         public void AddAction(Action action, TimeSpan? differentDelay = null)

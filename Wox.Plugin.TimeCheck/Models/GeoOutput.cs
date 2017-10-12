@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TimeCheck.Models
+namespace Wox.Plugin.TimeCheck.Models
 {
     public class GeoOutput
     {

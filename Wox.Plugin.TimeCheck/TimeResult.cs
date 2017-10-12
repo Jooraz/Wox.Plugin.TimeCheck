@@ -1,4 +1,4 @@
-﻿namespace TimeCheck
+﻿namespace Wox.Plugin.TimeCheck
 {
     public class TimeResult
     {
