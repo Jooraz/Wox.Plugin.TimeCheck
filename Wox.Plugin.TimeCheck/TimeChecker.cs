@@ -143,7 +143,7 @@ namespace Wox.Plugin.TimeCheck
 
         public System.Windows.Controls.Control CreateSettingPanel()
         {
-            return new TimeCheckPluginSettings(_context.API, _settings);
+            return new PluginSettings(_context.API, _settings);
         }
 
         public string GetTranslatedPluginTitle()

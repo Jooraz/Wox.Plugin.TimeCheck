@@ -13,12 +13,12 @@ namespace Wox.Plugin.TimeCheck
     /// <summary>
     /// Interaction logic for TimeCheckPluginSettings.xaml
     /// </summary>
-    public partial class TimeCheckPluginSettings : UserControl
+    public partial class PluginSettings : UserControl
     {
         private IPublicAPI woxAPI;
         private Settings _settings;
         
-        public TimeCheckPluginSettings(IPublicAPI woxAPI, Settings settings)
+        public PluginSettings(IPublicAPI woxAPI, Settings settings)
         {
             this.woxAPI = woxAPI;
             InitializeComponent();
