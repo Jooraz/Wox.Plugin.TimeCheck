@@ -56,7 +56,8 @@ namespace TimeCheck
                 return results;
             }
 
-            var found = Times.Where(x => x.Country.ToLower().Contains(query.Search.ToLower()) || x.Name.ToLower().Contains(query.Search.ToLower()));
+            string searchLowered = query.Search.ToLower();
+            var found = Times.Where(x => x.Country.ToLower().Contains(searchLowered) || x.Name.ToLower().Contains(searchLowered));
             found = found.Take(5);
             foreach (var el in found)
             {
